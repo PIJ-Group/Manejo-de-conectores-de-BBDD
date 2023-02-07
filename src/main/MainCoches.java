@@ -64,8 +64,9 @@ public class MainCoches {
 			switch (opcion) {
 
 			case 1: //Añadir nuevo coche
+				try {
 				cocheAux = new Coche();
-
+				
 				System.out.println("Añade la matricula");
 				cocheAux.setMatricula(sc.next());
 
@@ -81,25 +82,37 @@ public class MainCoches {
 				dc.altaCoche(cocheAux);
 				
 				System.out.println("Se ha registrado el coche: \n" + cocheAux);
-
+				
+				}catch (Exception e) {
+					System.out.println("El coche no se ha podido añadir");
+				}
 				break;
 
 			case 2: //Dar de baja un coche por ID
+				try {
 				System.out.println("Escribe el ID del coche a dar de baja: ");
 				idAux = sc.nextInt();
 				dc.bajaCoche(idAux);
 				
 				System.out.println("Se ha borrado el coche con ID: " + idAux);
+				}catch (Exception e) {
+					System.out.println("No se ha podido borrar el coche");
+				}
 				break;
 
 			case 3: //Consulta un coche por ID
+				try {
 				System.out.println("Escribe el ID del vehículo a consultar: ");
 				idAux = sc.nextInt();
 				Coche coche =dc.consultaCoche(idAux);
-				System.out.println(coche);				
+				System.out.println(coche);
+				}catch (Exception e) {
+					System.out.println("No se ha podido realizar la consulta");
+				}
 				break;
 
-			case 4:	//Modificar coche por ID	
+			case 4:	//Modificar coche por ID
+				try {
 				cocheAux = new Coche();
 
 				System.out.println("Introduce el ID del coche a modificar: ");
@@ -122,12 +135,19 @@ public class MainCoches {
 				System.out.println("Se ha modificado el registro del coche con Id: " + cocheAux.getId() 
 				+ "\npor los siguientes datos: \n" + cocheAux);
 				
+				}catch (Exception e) {
+					System.out.println("No se ha podido modificar el coche");
+				}
 				break;
 
 			case 5: //Listado de coches
+				try {
 				List<Coche> listaCoches = dc.listarCoches();
 				for(Coche c:listaCoches)
 					System.out.println(c);
+				}catch (Exception e) {
+					System.out.println("No se puede mostrar el listado");
+				}
 				break;
 				
 			case 6: //Gestión de pasajeros
@@ -162,6 +182,7 @@ public class MainCoches {
 			switch (subOpcion) {
 
 			case 1: //Añadir nuevo pasajero
+				try {
 				pasajeroAux = new Pasajero();
 
 				System.out.println("Añade el Nombre");
@@ -178,32 +199,49 @@ public class MainCoches {
 				dp.altaPasajero(pasajeroAux);
 				
 				System.out.println("Se ha registrado el pasajero: \n" + pasajeroAux);
-
+				}catch (Exception e) {
+					System.out.println("No se ha podido registrar al pasajero");
+				}
 				break;
 
 			case 2: //Borrar pasajero por ID
+				try {
 				System.out.println("Escribe el ID del pasajero a dar de baja: ");
 				idAux = sc.nextInt();
 				dp.bajaPasajero(idAux);
 				
 				System.out.println("Se ha borrado el pasajero con ID: " + idAux);
+				
+				}catch (Exception e) {
+					System.out.println("No se ha podido borrar al pasajero");
+				}
 				break;
 
 			case 3: //Consultar un pasajero por ID
+				try {
 				System.out.println("Escribe el ID del pasajero a consultar: ");
 				idAux = sc.nextInt();
 				Pasajero pasajero =dp.consultaPasajero(idAux);
-				System.out.println(pasajero);				
+				System.out.println(pasajero);	
+				
+				}catch (Exception e) {
+					System.out.println("No se ha podido realizar la consulta");
+				}
 				break;
 
-			case 4:	//Listar todos los pasajeros		
+			case 4:	//Listar todos los pasajeros
+				try {
 				List<Pasajero> listaPasajeros = dp.listarPasajeros();
 				for(Pasajero p:listaPasajeros)
 					System.out.println(p);
 				
+				}catch (Exception e) {
+					System.out.println("No se puede mostrar el listado");
+				}
 				break;
 
 			case 5: //Añadir pasajero a coche
+				try {
 				System.out.println("Introduce el ID del coche donde añadir un pasajero:");
 				int idCoche = sc.nextInt();
 				sc.nextLine();
@@ -213,9 +251,13 @@ public class MainCoches {
 				dp.addPasajeroACoche(idPas, idCoche);
 				
 				System.out.println("Pasajero con ID: " + idPas + " añadido al coche con ID: " + idCoche);
+				}catch (Exception e) {
+					System.out.println("No se ha podido añadir el pasajero al coche");
+				}
 				break;
 				
 			case 6: //Eliminar pasajero de un coche
+				try {
 				System.out.println("Introduce el ID del coche donde eliminar un pasajero:");
 				int idCocheBorrar = sc.nextInt();
 				sc.nextLine();
@@ -225,16 +267,24 @@ public class MainCoches {
 				dp.borrarPasajeroDeCoche(idPasBorrar, idCocheBorrar);
 				
 				System.out.println("Pasajero con ID: " + idPasBorrar + " eliminado del coche con ID: " + idCocheBorrar);
+				
+				}catch (Exception e) {
+					System.out.println("No se ha podido eliminar el pasajero del coche");
+				}
 				break;
 				
 				
 			case 7: //Listar todos los pasajeros de un coche
+				try {
 				System.out.println("Introduce el ID del coche del que quieres listar los pasajeros:");
 				int idCocheListar = sc.nextInt();
 				sc.nextLine();
 				List<Pasajero> listaPasajerosPorCoche = dp.listarPasajerosCoche(idCocheListar);
 				for(Pasajero p : listaPasajerosPorCoche)
 					System.out.println(p);
+				}catch (Exception e) {
+					System.out.println("No se puede mostrar el listado");
+				}
 				break;
 				
 			case 8: //Salir
