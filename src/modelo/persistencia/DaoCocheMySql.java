@@ -121,7 +121,7 @@ public class DaoCocheMySql implements DaoCoche{
 			ps.setString(2, c.getMarca());
 			ps.setString(3, c.getModelo());
 			ps.setString(4, c.getColor());
-			ps.setString(5, c.getId());
+			ps.setInt(5, c.getId());
 						
 			int numeroFilasAfectadas = ps.executeUpdate();
 			if(numeroFilasAfectadas == 0)
@@ -157,7 +157,7 @@ public class DaoCocheMySql implements DaoCoche{
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				coche = new Coche();
-				coche.setId(rs.getString(1));
+				coche.setId(rs.getInt(1));
 				coche.setMatricula(rs.getString(2));
 				coche.setMarca(rs.getString(3));
 				coche.setModelo(rs.getString(4));
@@ -192,7 +192,7 @@ public class DaoCocheMySql implements DaoCoche{
 			
 			while(rs.next()){
 				Coche coche = new Coche();
-				coche.setId(rs.getString(1));
+				coche.setId(rs.getInt(1));
 				coche.setMatricula(rs.getString(2));
 				coche.setMarca(rs.getString(3));
 				coche.setModelo(rs.getString(4));
@@ -212,40 +212,7 @@ public class DaoCocheMySql implements DaoCoche{
 		return listaCoches;
 	}
 	
-	//Comprobar disponibilidad vehículos
-	public List<Coche> comprobarDisponibilidad() {
-		if(!abrirConexion()) {
-			return null;
-		}
-		
-		String sql = "select coches.id, matricula, marca, modelo, color from coches left join pasajeros on coches.id = pasajeros.id_coche "
-				+ "group by id_coche having count(*) <5";
-		
-		try {
-			PreparedStatement ps = conexion.prepareStatement(sql);			
-						
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()){
-				Coche coche = new Coche();
-				coche.setId(rs.getString(1));
-				coche.setMatricula(rs.getString(2));
-				coche.setMarca(rs.getString(3));
-				coche.setModelo(rs.getString(4));
-				coche.setColor(rs.getString(5));
-				
-				listaCoches.add(coche);
-			}
-			
-		}catch (SQLException e) {
-			System.out.println("Comprobar disponibilidad => Error al mostrar vehículos disponibles");
-			e.printStackTrace();
-		}finally {
-			cerrarConexion();
-		}
-		
-		return listaCoches;
-	}
+	
 
 }
 	

@@ -8,12 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.entidad.Coche;
 import modelo.entidad.Pasajero;
 import modelo.persistencia.interfaces.DaoPasajero;
 
 public class DaoPasajeroMySql implements DaoPasajero{
 	
 private Connection conexion;
+List<Coche> listaCoches = new ArrayList<>();
 	
 	//Método para abrir la conexión con al Base de Datos
 	public boolean abrirConexion(){
@@ -271,5 +273,40 @@ private Connection conexion;
 				
 		return listaPasajeros;
 	}
+	
+	//Comprobar disponibilidad vehículos
+		public List<Coche> comprobarDisponibilidad() {
+			if(!abrirConexion()) {
+				return null;
+			}
+			
+			String sql = "select coches.id, matricula, marca, modelo, color from coches left join pasajeros on coches.id = pasajeros.id_coche "
+					+ "group by id_coche having count(*) <5";
+			
+			try {
+				PreparedStatement ps = conexion.prepareStatement(sql);			
+							
+				ResultSet rs = ps.executeQuery();
+				
+				while(rs.next()){
+					Coche coche = new Coche();
+					coche.setId(rs.getInt(1));
+					coche.setMatricula(rs.getString(2));
+					coche.setMarca(rs.getString(3));
+					coche.setModelo(rs.getString(4));
+					coche.setColor(rs.getString(5));
+					
+					listaCoches.add(coche);
+				}
+				
+			}catch (SQLException e) {
+				System.out.println("Comprobar disponibilidad => Error al mostrar vehículos disponibles");
+				e.printStackTrace();
+			}finally {
+				cerrarConexion();
+			}
+			
+			return listaCoches;
+		}
 	
 }

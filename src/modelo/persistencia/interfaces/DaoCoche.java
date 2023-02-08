@@ -43,8 +43,7 @@ public interface DaoCoche {
 	 */
 	public List<Coche> listarCoches();
 	
-	//LO HE TENIDO QUE METER AQUI PARA PODER VERLO, SI NO NO ME DEJABA LLAMARLO
-	public List<Coche> comprobarDisponibilidad();
+	
 
 }
 
