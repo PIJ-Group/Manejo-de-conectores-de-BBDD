@@ -268,9 +268,8 @@ private Connection conexion;
 		} finally {
 			cerrarConexion();
 		}
-		
-		
+				
 		return listaPasajeros;
 	}
-
+	
 }
