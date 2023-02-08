@@ -175,6 +175,8 @@ public class MainCochesPasajeros {
 		Pasajero pasajeroAux;
 		int idAux, subOpcion;
 		DaoPasajero dp = new DaoPasajeroMySql();
+		//CREADO PARA PODER IMPLEMENTAR EL MÉTODO
+		DaoCoche dc = new DaoCocheMySql();
 		
 		do {
 			subOpcion = subMenu();
@@ -242,6 +244,10 @@ public class MainCochesPasajeros {
 
 			case 5: //Añadir pasajero a coche
 				try {
+				System.out.println("Estos son los vehículos disponibles:");
+				//SOLO ME DEJA SI LO METO EN LA INTERFAZ TAMBIÉN, REVISAR
+				dc.comprobarDisponibilidad();
+				
 				System.out.println("Introduce el ID del coche donde añadir un pasajero:");
 				int idCoche = sc.nextInt();
 				sc.nextLine();
@@ -258,6 +264,8 @@ public class MainCochesPasajeros {
 				
 			case 6: //Eliminar pasajero de un coche
 				try {
+				System.out.println("Mostrando los pasajeros:");
+				dp.listarPasajeros();
 				System.out.println("Introduce el ID del coche donde eliminar un pasajero:");
 				int idCocheBorrar = sc.nextInt();
 				sc.nextLine();
