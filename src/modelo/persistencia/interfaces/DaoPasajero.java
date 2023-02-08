@@ -2,6 +2,7 @@ package modelo.persistencia.interfaces;
 
 import java.util.List;
 
+import modelo.entidad.Coche;
 import modelo.entidad.Pasajero;
 
 public interface DaoPasajero {
@@ -58,6 +59,12 @@ public interface DaoPasajero {
 	 * con la BBDD.
 	 */
 	public List<Pasajero> listarPasajerosCoche(int idCoche);
+	
+	/**
+	 * Metodo para comprobar cuantos coches hay disponibles con menos de cinco pasajeros.
+	 * @return la lista de coches disponibles que puedan albergar pasajeros
+	 */
+	public List<Coche> comprobarDisponibilidad();
 	
 
 }

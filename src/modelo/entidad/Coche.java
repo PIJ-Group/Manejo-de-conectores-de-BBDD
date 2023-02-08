@@ -3,14 +3,14 @@ package modelo.entidad;
 import java.util.Objects;
 
 public class Coche{
-	
-		String id,matricula,marca,modelo,color;
+		int id;
+		String matricula,marca,modelo,color;
 
 	public Coche() {
 		super();
 	}
 
-	public Coche(String id, String matricula, String marca, String modelo, String color) {
+	public Coche(int id, String matricula, String marca, String modelo, String color) {
 		super();
 		this.id = id;
 		this.matricula = matricula;
@@ -19,11 +19,11 @@ public class Coche{
 		this.color = color;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
