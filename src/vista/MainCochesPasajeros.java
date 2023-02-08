@@ -1,4 +1,4 @@
-package main;
+package vista;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import modelo.persistencia.DaoPasajeroMySql;
 import modelo.persistencia.interfaces.DaoCoche;
 import modelo.persistencia.interfaces.DaoPasajero;
 
-public class MainCoches {
+public class MainCochesPasajeros {
 	
 	static Scanner sc = new Scanner(System.in);
 
@@ -46,7 +46,7 @@ public class MainCoches {
 		System.out.println("5. Añadir pasajero a coche");
 		System.out.println("6. Eliminar pasajero de un coche");
 		System.out.println("7. Listar todos los pasajeros de un coche");
-		System.out.println("8. Salir");
+		System.out.println("8. Volver al menú de coches");
 		int option = sc.nextInt();
 		System.out.println("Has elegido la opción: " + option);
 		return option;
