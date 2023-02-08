@@ -1,4 +1,4 @@
-# Manejo-de-conectores-de-BBDD
+# Manejo de conectores de BBDD
 Práctica de Acceso a Datos de 2ºDAM de manejo de conectores de BBDD
 
 ![image](https://user-images.githubusercontent.com/98821740/217233343-0615ab03-3ccd-47d4-b177-d92ad4fcf148.png)
