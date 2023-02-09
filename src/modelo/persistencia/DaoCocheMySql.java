@@ -181,8 +181,6 @@ public class DaoCocheMySql implements DaoCoche{
 			return null;
 		}		
 		
-		//HE BORRADO DE AQUI LA CREACIÓN DE LA LISTA Y LO HE PUESTO FUERA,
-		//PARA SOLO CREAR UN OBJETO LISTA PARA ESTE Y PARA COMPROBAR COCHE LIBRE.
 		String query = "select ID,MATRICULA,MARCA,MODELO,COLOR from coches";
 		
 		try {
@@ -211,9 +209,7 @@ public class DaoCocheMySql implements DaoCoche{
 		
 		return listaCoches;
 	}
-	
-	
-
+		
 }
 	
 
