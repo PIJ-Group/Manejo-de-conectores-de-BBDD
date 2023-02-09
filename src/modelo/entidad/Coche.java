@@ -1,8 +1,8 @@
 package modelo.entidad;
 
 public class Coche{
-		int id;
-		String matricula,marca,modelo,color;
+	private	int id;
+	private	String matricula,marca,modelo,color;
 
 	public Coche() {
 		super();
