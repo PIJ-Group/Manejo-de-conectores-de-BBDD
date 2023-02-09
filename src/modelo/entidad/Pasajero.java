@@ -1,12 +1,9 @@
 package modelo.entidad;
 
 public class Pasajero {
-	private int id;
+	private int id, edad, idCoche;
 	private String nombre;
-	private int edad;
 	private double peso;
-	private int idCoche;
-	
 	
 	public Pasajero() {
 		super();
