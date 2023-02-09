@@ -15,7 +15,6 @@ import modelo.persistencia.interfaces.DaoPasajero;
 public class DaoPasajeroMySql implements DaoPasajero{
 	
 private Connection conexion;
-List<Coche> listaCoches = new ArrayList<>();
 	
 	//Método para abrir la conexión con al Base de Datos
 	public boolean abrirConexion(){
@@ -279,9 +278,9 @@ List<Coche> listaCoches = new ArrayList<>();
 			if(!abrirConexion()) {
 				return null;
 			}
-			
-			String sql = "select coches.id, matricula, marca, modelo, color from coches left join pasajeros on coches.id = pasajeros.id_coche "
-					+ "group by id_coche having count(*) <5";
+			List<Coche> listaCoches = new ArrayList<>();
+			String sql = "select coches.id, matricula, marca, modelo, color from coches left join pasajeros on coches.id "
+					+ "= pasajeros.id_coche group by id_coche having count(*) <5";
 			
 			try {
 				PreparedStatement ps = conexion.prepareStatement(sql);			
@@ -308,5 +307,5 @@ List<Coche> listaCoches = new ArrayList<>();
 			
 			return listaCoches;
 		}
-	
+
 }
