@@ -65,20 +65,4 @@ public class Coche{
 				+ color + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, matricula);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Coche other = (Coche) obj;
-		return Objects.equals(id, other.id) || Objects.equals(matricula, other.matricula);
-	}
 }
