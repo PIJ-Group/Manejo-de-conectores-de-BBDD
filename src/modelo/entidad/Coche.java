@@ -1,7 +1,5 @@
 package modelo.entidad;
 
-import java.util.Objects;
-
 public class Coche{
 		int id;
 		String matricula,marca,modelo,color;
